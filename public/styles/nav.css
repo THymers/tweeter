@@ -1,0 +1,38 @@
+nav {
+  height: 120px;
+  width: 100%;
+  background-color: #4056a1;
+  color: #ffffff;
+  position: fixed;
+}
+
+nav span {
+  font-family: "Bungee";
+}
+
+nav {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.tweeter {
+  display: flex;
+  justify-content: flex-start;
+}
+/* Style the "Write a new tweet" section */
+.tweet-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* Style the text "Write a new tweet" */
+.tweet-section span {
+  margin-bottom: 5px;
+}
+
+/* Style the angle-double-down icon */
+.tweet-section i {
+  font-size: 20px;
+}

@@ -6,7 +6,9 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -23,3 +25,19 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+/* Apply Source Sans 3 to everything in the body */
+body {
+  font-family: "Source Sans 3", sans-serif;
+}
+
+/* Apply Bungee to the Tweeter logo in the nav */
+nav .logo {
+  font-family: "Bungee", sans-serif;
+}
+/* Styles for the <main> element */
+main {
+  width: 90%;
+  margin: 0 auto;
+  background-color: inherit;
+}

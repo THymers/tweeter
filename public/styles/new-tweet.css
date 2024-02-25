@@ -1,0 +1,37 @@
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.new-tweet h2,
+.new-tweet label,
+.new-tweet textarea {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.new-tweet textarea {
+  background-color: inherit;
+  width: 100%;
+  border: none;
+  border-bottom: 3px solid black;
+}
+
+.new-tweet div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+
+.new-tweet button {
+  background-color: rgb(40, 40, 142);
+  color: #79eb21;
+  border-style: groove;
+  border-color: #e70faa;
+}
+
+.exceed-limit {
+  color: red;
+}
