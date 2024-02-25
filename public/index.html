@@ -56,7 +56,7 @@
         <i class="fa-solid fa-angles-down"></i>
       </div>
     </nav>
-    <header>
+    <header class="header-element">
       <div>
         <img src="/images/profile-hex.png" />
       </div>
@@ -71,17 +71,36 @@
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form action="/tweets" method="POST">
-          <label for="tweet-text">What are you humming about?</label>
           <textarea
             name="tweet_content"
             id="tweet-text"
-            placeholder="Tweet content"
+            placeholder="What are you humming about?"
           ></textarea>
           <div>
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+      <!-- container for the tweets w/in the main container -->
+      <section>
+        <div id="tweet-container">
+          <article class="tweet-container">
+            <header>
+              <h3>Bob</h3>
+              <h4>@userHandle</h4>
+            </header>
+            <textarea>Hello world!</textarea>
+            <footer>
+              <p>10 <span class="postedDaysAgo"></span> days ago</p>
+              <div class="icon-container">
+                <i class="fa-solid fa-flag"></i>
+                <i class="fa-solid fa-retweet"></i>
+                <i class="fa-solid fa-heart"></i>
+              </div>
+            </footer>
+          </article>
+        </div>
       </section>
     </main>
   </body>
