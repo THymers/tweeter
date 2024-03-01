@@ -29,7 +29,6 @@ function createTweetElement(tweet) {
                 <p>${tweet.content.text}</p>
             </div>
             <footer>
-                <span class="timestamp"></span>
                 <div class="icons">
                     <i class="fas fa-flag"></i>
                     <i class="fas fa-retweet"></i>
