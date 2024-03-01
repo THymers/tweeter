@@ -21,9 +21,7 @@ function createTweetElement(tweet) {
   const $tweet = $(`
         <article class="tweet">
             <header>
-                <img class="avatar" src="${
-                  tweet.user.avatars
-                }" alt="User Avatar">
+                <img class="avatar" src="${tweet.user.avatars}" alt="User Avatar">
                 <h2 class="name">${tweet.user.name}</h2>
                 <span class="handle">${tweet.user.handle}</span>
             </header>
@@ -31,7 +29,7 @@ function createTweetElement(tweet) {
                 <p>${tweet.content.text}</p>
             </div>
             <footer>
-                <span class="timestamp">${timeSince(tweet.posted_at)}</span>
+                <span class="timestamp"></span>
                 <div class="icons">
                     <i class="fas fa-flag"></i>
                     <i class="fas fa-retweet"></i>
@@ -47,6 +45,6 @@ function createTweetElement(tweet) {
 const renderTweets = function (tweets) {
   for (let tweet of tweets) {
     const $tweet = createTweetElement(tweet);
-    $("#tweets-container").append($tweet);
+    $("#tweets-container").prepend($tweet);
   }
 };
