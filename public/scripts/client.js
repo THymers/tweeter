@@ -39,22 +39,41 @@ const renderTweets = function (tweets) {
 };
 
 //ajax to listen, prevent, serialize and post
-const submit = (event) => {
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", submitTweet);
+});
+
+const submitTweet = (event) => {
   event.preventDefault();
   const formData = $(event.target).serialize();
+  const tweetText = $(event.target)
+    .find("textarea[name='tweet_content']")
+    .val();
+
+  if (!tweetText || tweetText.trim() === "") {
+    alert("No tweet content.");
+    return;
+  }
+
+  if (tweetText.trim().length > 140) {
+    alert("Too many characters.");
+    return;
+  }
+
   $.ajax({
     url: "/tweets",
     type: "POST",
     data: formData,
     success: function (response) {
-      console.log("Tweetered:", response);
+      renderTweets(response);
     },
     error: function (xhr, status, error) {
       console.error("Error:", error);
     },
   });
 };
-$("form").submit(handleSubmit);
 
 // AJAX GET request to fetch tweets
 const loadTweets = () => {
