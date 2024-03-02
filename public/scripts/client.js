@@ -34,6 +34,7 @@ function createTweetElement(tweet) {
 }
 
 const renderTweets = function (tweets) {
+  $("#tweet-container").empty();
   for (let tweet of tweets) {
     const $tweet = createTweetElement(tweet);
     $("#tweet-container").prepend($tweet);
@@ -69,7 +70,8 @@ const submitTweet = (event) => {
     type: "POST",
     data: formData,
     success: function (response) {
-      renderTweets(response);
+      $("#tweet-container").empty();
+      loadTweets();
     },
     error: function (xhr, status, error) {
       console.error("Error:", error);
