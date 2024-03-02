@@ -8,10 +8,12 @@ function createTweetElement(tweet) {
   const timeAgo = timeago.format(tweet.posted);
 
   const $tweet = $(`
-        <article class="tweet">
+        <article class="tweet-container">
             <header>
+            <div class = "avatar-username">
                 <img class="avatar" src="${tweet.user.avatars}" alt="User Avatar">
-                <h2 class="name">${tweet.user.name}</h2>
+                <h3 class="name">${tweet.user.name}</h3>
+                </div>
                 <span class="handle">${tweet.user.handle}</span>
             </header>
             <div class="content">
@@ -53,12 +55,12 @@ const submitTweet = (event) => {
     .val();
 
   if (!tweetText || tweetText.trim() === "") {
-    alert("No tweet content.");
+    showAlert("No tweet content.");
     return;
   }
 
   if (tweetText.trim().length > 140) {
-    alert("Too many characters.");
+    showAlert("Too many characters.");
     return;
   }
 

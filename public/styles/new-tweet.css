@@ -6,7 +6,7 @@
 
 .new-tweet h2,
 .new-tweet label,
-.new-tweet textarea {
+.new-tweet content {
   display: flex;
   justify-content: flex-start;
 }
@@ -38,7 +38,7 @@
 }
 
 .tweet-container {
-  border: 2px solid #ccc;
+  border: 5px solid #ccc;
   padding: 10px;
   margin-top: 20px;
   border-style: groove;
@@ -57,24 +57,32 @@ article {
 }
 
 .tweet-container header {
+  font-family: "Source Sans 3", sans-serif;
+  color: grey;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Source Sans 3", sans-serif;
-  color: grey;
 }
 
-.tweet-container header h3 {
+.tweet-container header .avatar-username {
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
 }
 
-.tweet-container header h4 {
+.tweet-container header .avatar-username .avatar {
+  margin-right: 10px;
+}
+
+.tweet-container header .avatar-username .name {
+  margin: 0;
+}
+
+.tweet-container header .handle {
   display: flex;
   justify-content: flex-end;
 }
 
-.tweet-container textarea {
+.tweet-container .content {
   width: 100%;
   border: none;
   border-bottom: 3px solid black;
@@ -89,20 +97,20 @@ article {
   margin-top: 20px;
 }
 
-.tweet-container footer p {
+.tweet-container footer .timestamp {
   display: flex;
   align-content: flex-start;
-  font-size: 16px;
+  font-size: 20px;
 }
 
-.tweet-container footer icon-container {
+.tweet-container footer .icons {
   display: flex;
   align-content: flex-end;
-  flex-direction: column;
-  font-size: 16px;
+  flex-direction: row;
+  font-size: 20px;
 }
 
-.tweet-container footer .icon-container i:hover {
+.tweet-container footer .icons i:hover {
   color: green;
   cursor: pointer;
 }
