@@ -4,6 +4,15 @@
   align-content: center;
 }
 
+#tweet-error-message {
+  display: none;
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+  border: 3px solid red;
+  border-radius: 10px;
+}
+
 .new-tweet h2,
 .new-tweet label,
 .new-tweet content {
@@ -100,14 +109,14 @@ article {
 .tweet-container footer .timestamp {
   display: flex;
   align-content: flex-start;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .tweet-container footer .icons {
   display: flex;
   align-content: flex-end;
   flex-direction: row;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .tweet-container footer .icons i:hover {

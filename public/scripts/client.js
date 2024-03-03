@@ -4,23 +4,30 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-function createTweetElement(tweet) {
-  const timeAgo = timeago.format(tweet.posted);
+$(document).ready(function () {
+  const createTweetElement = function (tweet) {
+    const timeAgo = timeago.format(tweet.posted);
 
-  const $tweet = $(`
-        <article class="tweet-container">
-            <header>
-            <div class = "avatar-username">
-                <img class="avatar" src="${tweet.user.avatars}" alt="User Avatar">
-                <h3 class="name">${tweet.user.name}</h3>
-                </div>
-                <span class="handle">${tweet.user.handle}</span>
-            </header>
-            <div class="content">
-                <p>${tweet.content.text}</p>
-            </div>
-            <footer>
-             <span class="timestamp">${timeAgo}</span>
+    const escape = function (str) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    };
+
+    const $tweet = $(`
+    <article class="tweet-container">
+    <header>
+    <div class = "avatar-username">
+    <img class="avatar" src="${escape(tweet.user.avatars)}" alt="User Avatar">
+    <h3 class="name">${escape(tweet.user.name)}</h3>
+    </div>
+    <span class="handle">${escape(tweet.user.handle)}</span>
+    </header>
+    <div class="content">
+    <p>${escape(tweet.content.text)}</p>
+    </div>
+    <footer>
+      <span class="timestamp">${timeAgo}</span>
                 <div class="icons">
                     <i class="fas fa-flag"></i>
                     <i class="fas fa-retweet"></i>
@@ -30,70 +37,68 @@ function createTweetElement(tweet) {
         </article>
     `);
 
-  return $tweet;
-}
+    return $tweet;
+  };
 
-const renderTweets = function (tweets) {
-  $("#tweet-container").empty();
-  for (let tweet of tweets) {
-    const $tweet = createTweetElement(tweet);
-    $("#tweet-container").prepend($tweet);
-  }
-};
+  const renderTweets = function (tweets) {
+    $("#tweet-container").empty();
+    for (let tweet of tweets) {
+      const $tweet = createTweetElement(tweet);
+      $("#tweet-container").prepend($tweet);
+    }
+  };
 
-//ajax to listen, prevent, serialize and post
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("form");
-
-  form.addEventListener("submit", submitTweet);
-});
-
-const submitTweet = (event) => {
-  event.preventDefault();
-  const formData = $(event.target).serialize();
-  const tweetText = $(event.target)
-    .find("textarea[name='tweet_content']")
-    .val();
-
-  if (!tweetText || tweetText.trim() === "") {
-    showAlert("No tweet content.");
-    return;
+  $("#tweet-error-message").hide();
+  function showAlert(message) {
+    const errorMessage = $("#tweet-error-message");
+    errorMessage.text(message);
+    errorMessage.show();
+    setTimeout(function () {
+      errorMessage.hide();
+    }, 5000);
   }
 
-  if (tweetText.trim().length > 140) {
-    showAlert("Too many characters.");
-    return;
-  }
+  $("form").submit(function (event) {
+    event.preventDefault();
+    const formData = $("form").serialize();
+    const tweetText = $("#tweet-text").val();
 
-  $.ajax({
-    url: "/tweets",
-    type: "POST",
-    data: formData,
-    success: function (response) {
-      $("#tweet-container").empty();
-      loadTweets();
-    },
-    error: function (xhr, status, error) {
-      console.error("Error:", error);
-    },
+    if (!tweetText || tweetText.trim() === "") {
+      showAlert("No tweet content.");
+      return;
+    }
+
+    if (tweetText.trim().length > 140) {
+      showAlert("Too many characters.");
+      return;
+    }
+
+    $.ajax({
+      url: "/tweets",
+      type: "POST",
+      data: formData,
+      success: function (response) {
+        loadTweets();
+      },
+      error: function (xhr, status, error) {
+        console.error("Error:", error);
+      },
+    });
   });
-};
 
-// AJAX GET request to fetch tweets
-const loadTweets = () => {
-  $.ajax({
-    url: "/tweets",
-    type: "GET",
-    dataType: "json",
-    success: function (response) {
-      renderTweets(response);
-    },
-    error: function (xhr, status, error) {
-      console.error("No tweets:", error);
-    },
-  });
-};
+  // AJAX GET request to fetch tweets
+  const loadTweets = () => {
+    $.ajax({
+      url: "/tweets",
+      type: "GET",
+      success: function (response) {
+        renderTweets(response);
+      },
+      error: function (xhr, status, error) {
+        console.error("No tweets:", error);
+      },
+    });
+  };
 
-$(document).ready(function () {
   loadTweets();
 });

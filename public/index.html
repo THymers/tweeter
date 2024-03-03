@@ -64,17 +64,18 @@
       </div>
       <br />
       <div>
-        <h2>Your Name</h2>
+        <h2>Tara Hymers</h2>
       </div>
     </header>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <div id="tweet-error-message" style="display:none; color: red;"></div>
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
+        <h2></h2>
         <form action="/tweets" method="POST">
           <textarea
-            name="tweet_content"
+            name="tweet-content"
             id="tweet-text"
             placeholder="What are you humming about?"
           ></textarea>
@@ -102,7 +103,6 @@
               </div>
             </footer>
           </article>
-        </div>
       </section>
     </main>
   </body>
