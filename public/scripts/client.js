@@ -18,20 +18,20 @@ $(document).ready(function () {
     <article class="tweet-container">
     <header>
     <div class = "avatar-username">
-    <img class="avatar" src="${escape(tweet.user.avatars)}" alt="User Avatar">
-    <h3 class="name">${escape(tweet.user.name)}</h3>
+    <img class="avatar" src="${tweet.user.avatars}" alt="User Avatar">
+    <h3 class="name">${tweet.user.name}</h3>
     </div>
-    <span class="handle">${escape(tweet.user.handle)}</span>
+    <span class="handle">${tweet.user.handle}</span>
     </header>
     <div class="content">
-    <p>${escape(tweet.content.text)}</p>
-    </div>
-    <footer>
-      <span class="timestamp">${timeAgo}</span>
-                <div class="icons">
-                    <i class="fas fa-flag"></i>
-                    <i class="fas fa-retweet"></i>
-                    <i class="fas fa-heart"></i>
+     <p>${escape(tweet.content.text)}</p>
+        </div>
+      <footer>
+        <span class="timestamp">${timeAgo}</span>
+            <div class="icons">
+                <i class="fas fa-flag"></i>
+                <i class="fas fa-retweet"></i>
+                <i class="fas fa-heart"></i>
                 </div>
             </footer>
         </article>
@@ -52,15 +52,17 @@ $(document).ready(function () {
   function showAlert(message) {
     const errorMessage = $("#tweet-error-message");
     errorMessage.text(message);
-    errorMessage.show();
-    setTimeout(function () {
-      errorMessage.hide();
-    }, 5000);
+    errorMessage.slideDown();
   }
+
+  $("#tweet-text").keyup(function () {
+    $("#tweet-error-message").slideUp();
+  });
 
   $("form").submit(function (event) {
     event.preventDefault();
     const formData = $("form").serialize();
+    console.log(formData);
     const tweetText = $("#tweet-text").val();
 
     if (!tweetText || tweetText.trim() === "") {
@@ -75,27 +77,22 @@ $(document).ready(function () {
 
     $.ajax({
       url: "/tweets",
-      type: "POST",
+      method: "POST",
       data: formData,
-      success: function (response) {
-        loadTweets();
-      },
-      error: function (xhr, status, error) {
-        console.error("Error:", error);
-      },
-    });
+    })
+      .then(loadTweets)
+      .catch((error) => {
+        console.log("Error: ", error);
+      });
   });
 
   // AJAX GET request to fetch tweets
   const loadTweets = () => {
     $.ajax({
       url: "/tweets",
-      type: "GET",
+      method: "GET",
       success: function (response) {
         renderTweets(response);
-      },
-      error: function (xhr, status, error) {
-        console.error("No tweets:", error);
       },
     });
   };
