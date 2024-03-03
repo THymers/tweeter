@@ -70,12 +70,11 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <div id="tweet-error-message" style="display:none; color: red;"></div>
       <section class="new-tweet">
-        <h2></h2>
+        <h2><div id="tweet-error-message" style="display:none; color: red;"></div></h2>
         <form action="/tweets" method="POST">
           <textarea
-            name="tweet-content"
+            name="text"
             id="tweet-text"
             placeholder="What are you humming about?"
           ></textarea>
