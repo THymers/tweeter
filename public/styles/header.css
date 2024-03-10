@@ -1,6 +1,5 @@
-header {
-  height: calc(400px + 520px);
-  width: 100%;
+.header-element {
+  height: 920px;
   background-color: #e70faa;
   background-image: url("https://www.transparenttextures.com/patterns/back-pattern.png");
   color: #79eb21;
