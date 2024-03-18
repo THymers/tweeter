@@ -24,15 +24,17 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+  position: absolute;
+  right: 1.5em;
 }
-
-/* Style the text "Write a new tweet" */
+/* Style the "Write a new tweet" section */
 .tweet-section span {
-  margin-bottom: 5px;
+  text-align: center;
 }
-
 /* Style the angle-double-down icon */
 .tweet-section i {
   font-size: 20px;
+  color: #e70faa;
+  margin-top: 5px;
 }
