@@ -4,6 +4,7 @@ nav {
   background-color: #4056a1;
   color: #ffffff;
   position: fixed;
+  top: 0;
 }
 
 nav span {
@@ -35,6 +36,6 @@ nav {
 /* Style the angle-double-down icon */
 .tweet-section i {
   font-size: 20px;
-  color: #e70faa;
+  color: #79eb21;
   margin-top: 5px;
 }
