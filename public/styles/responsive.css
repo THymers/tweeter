@@ -34,6 +34,8 @@
 /* tablets and phones */
 @media (max-width: 1023px) {
   nav {
+    background-color: #e70faa;
+    background-image: url("https://www.transparenttextures.com/patterns/back-pattern.png");
     padding: 10px 10px;
   }
 
