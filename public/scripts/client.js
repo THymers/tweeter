@@ -6,7 +6,7 @@
 
 $(document).ready(function () {
   const createTweetElement = function (tweet) {
-    const timeAgo = timeago.format(tweet.posted);
+    const timeAgo = timeago.format(tweet.created_at);
 
     const escape = function (str) {
       let div = document.createElement("div");
