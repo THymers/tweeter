@@ -59,6 +59,32 @@ $(document).ready(function () {
     $("#tweet-error-message").slideUp();
   });
 
+  // $("form").submit(function (event) {
+  //   event.preventDefault();
+  //   const formData = $("form").serialize();
+  //   console.log(formData);
+  //   const tweetText = $("#tweet-text").val();
+
+  //   if (!tweetText || tweetText.trim() === "") {
+  //     showAlert("No tweet content.");
+  //     return;
+  //   }
+
+  //   if (tweetText.trim().length > 140) {
+  //     showAlert("Too many characters.");
+  //     return;
+  //   }
+
+  //   $.ajax({
+  //     url: "/tweets",
+  //     method: "POST",
+  //     data: formData,
+  //   })
+  //     .then(loadTweets)
+  //     .catch((error) => {
+  //       console.log("Error: ", error);
+  //     });
+  // });
   $("form").submit(function (event) {
     event.preventDefault();
     const formData = $("form").serialize();
@@ -80,7 +106,11 @@ $(document).ready(function () {
       method: "POST",
       data: formData,
     })
-      .then(loadTweets)
+      .then(() => {
+        $("#tweet-text").val("");
+
+        loadTweets();
+      })
       .catch((error) => {
         console.log("Error: ", error);
       });
