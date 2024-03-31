@@ -2,22 +2,21 @@
 @media (min-width: 1024px) {
   body {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
   }
 
   nav {
-    position: fixed;
     width: 100%;
     z-index: 100;
   }
 
   .header-element {
-    position: fixed;
-    margin-top: 170px;
-    left: 50px;
-    height: 500px;
-    width: 500px;
+    /* margin-top: 120px; */
+    /* left: 50px; */
+    height: 450px;
+    width: 650px;
+    margin: 30px;
   }
 
   .container {
@@ -27,12 +26,16 @@
     margin-top: 170px;
     margin-right: 20px;
     padding: 20px;
-    width: 55%;
   }
 }
 
 /* tablets and phones */
 @media (max-width: 1023px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   nav {
     background-color: #e70faa;
     background-image: url("https://www.transparenttextures.com/patterns/back-pattern.png");
@@ -41,7 +44,8 @@
 
   .header-element {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 120px;
+    width: 100%;
   }
 
   .header-element div:first-child {

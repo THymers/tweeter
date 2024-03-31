@@ -1,11 +1,21 @@
 .header-element {
-  height: 920px;
+  /* height: 920px; */
   background-color: #e70faa;
   background-image: url("https://www.transparenttextures.com/patterns/back-pattern.png");
   color: #79eb21;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.header-element div {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-element h2 {
+  padding-bottom: 30px;
+  padding-top: none;
 }
